@@ -1,6 +1,6 @@
 id: "shop_on_staticfile"
-label: "親ウェブサイト"
-version: "（no.1 親ウェブサイトです）"
+label: "子ブログ"
+version: "（no.2 １つ目の子ブログ「blog-a」です）"
 author_link: "http://shop0714.movabletype.io.vagrant.local/"
 author_name: "shop"
 description: "shop_on_staticfile"
