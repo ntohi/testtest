@@ -1,15 +1,16 @@
-<div class="contain-to-grid show-for-large-up">
-  <div class="menu top-bar" data-topbar>
+<div class="contain-to-grid show-for-medium-up">
+  <div class="menu top-bar menu-height" data-topbar>
     <ul class="title-area">
       <li class="name">
-        <h1><a href="<$mt:BlogRelativeURL$>"><$mt:BlogName encode_html="1"$></a></h1></li>
+        <h1><a href="<$mt:BlogRelativeURL$>"><img src="<$mt:BlogRelativeURL$>images/logo.png" alt="<$mt:BlogName encode_html="1"$>" /></a></h1></li>
       <li class="toggle-topbar menu-icon">
         <a href="">Menu</a>
       </li>
     </ul>
+    <div class="right contact-info"><p>受付時間 10:00 - 19:00（土日祝日除く）<br /><span class="tel">TEL 03-XXXX-XXXX</span></p></div>
 
     <section class="top-bar-section">
-    <ul class="right">
+    <ul>
       <li><a href="<$mt:BlogRelativeURL$>">ホーム</a></li>
         <li class="has-dropdown">
           <a data-dropdown="drop-news" aria-controls="drop-news" aria-expanded="false">ニュース</a>
@@ -18,35 +19,50 @@
             <mt:Categories>
             <mt:SetVarBlock name="category_count"><$mt:CategoryCount$></mt:SetVarBlock>
             <mt:If name="category_count" ne="0">
-            <li><a href="<$mt:CategoryArchiveLink$>"><$mt:CategoryLabel$></a></li>
+            <li><a href="<$mt:CategoryArchiveLink$>"><$mt:CategoryLabel encode_html="1"$></a></li>
             </mt:If>
             </mt:Categories>
           </ul>
         </li>
-        <mt:Folders>
-        <mt:SetVarBlock name="description"><$mt:FolderDescription$></mt:SetVarBlock>
-        <mt:SetVarBlock name="currentpage"><$mt:FolderLabel$></mt:SetVarBlock>
-        <mt:Unless name="description" eq="footer_link">
+        
+
+    
+    <mt:TopLevelFolders>
         <li class="has-dropdown">
-          <a data-dropdown="<$mt:FolderBasename$>" aria-controls="<$mt:FolderBasename$>" aria-expanded="false"><$mt:FolderLabel$></a>
+          <a data-dropdown="<$mt:FolderBasename$>" aria-controls="<$mt:FolderBasename$>" aria-expanded="false"><$mt:FolderLabel encode_html="1"$></a>
           <ul id="<$mt:FolderBasename$>" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
-          <mt:Pages sort_order="ascend">
-            <li><a href="<$mt:PagePermalink$>"><$mt:PageTitle$></a></li>
+          <mt:Pages sort_order="ascend" field:footer_menu="0">
+            <li><a href="<$mt:PagePermalink$>"><$mt:PageTitle encode_html="1"$></a></li>
+          </mt:Pages>
+          <mt:SubFolders>
+          <li>
+          <ul id="<$mt:FolderBasename$>" class="folder-open" tabindex="-1">
+          <li class="folder-label"><$mt:FolderLabel encode_html="1"$> <i class="fa fa-caret-down fa-sm"></i></li>
+          <mt:Pages sort_order="ascend" field:footer_menu="0">
+            <li><a href="<$mt:PagePermalink$>" class="page-link"><$mt:PageTitle encode_html="1"$></a></li>
           </mt:Pages>
           </ul>
+          </li>
+          <$mt:SubFolderRecurse$>
+          </mt:SubFolders>
+          </ul>
         </li>
-        </mt:Unless>
-        </mt:Folders>
-        <mt:Pages no_folder="1" sort_order="ascend">
-        <li><a href="<$mt:PagePermalink$>"><$mt:PageTitle$></a></li>
+    </mt:TopLevelFolders>
+        <mt:Pages no_folder="1" sort_order="ascend" field:footer_menu="0">
+        <li><a href="<$mt:PagePermalink$>"><$mt:PageTitle encode_html="1"$></a></li>
         </mt:Pages>
     </ul>
     </section>
   </div>
 </div>
 
-<div class="toggle-button hide-for-large-up" style="background-color:rgb(58, 35, 35);">
+<div class="toggle-button hide-for-medium-up sp-menu" style="background-color:<$mt:GetVar name="maincolor"$>">
   <a class="left-off-canvas-toggle menu-icon">
-  <span>MENU</span>
+  <span></span>
   </a>
+  <section class="middle tab-bar-section">
+    <h1 class="title"><a href="<$mt:BlogRelativeURL$>"><img src="<$mt:BlogRelativeURL$>images/logo.png" alt="<$mt:BlogName encode_html="1"$>" /></a></h1>
+<div class="contact-info-sp"><p>受付時間 10:00 - 19:00（土日祝日除く）<br /><span class="tel"><a href="tel:">TEL 03-XXXX-XXXX</a></span></p></div>
+  </section>
+
 </div>

@@ -1,0 +1,33 @@
+<div class="sidebar">
+<div class="group">
+<mt:SetVarBlock name="page_folder"><mt:PageFolder><$mt:FolderLabel$></mt:PageFolder></mt:SetVarBlock>
+<$mt:PageID setvar="id"$>
+<mt:IfFolder>
+  <mt:Pages folder="$page_folder">
+    <mt:PagesHeader>
+      <h2><i class="fa fa-chevron-right"></i> <$mt:Var name="page_folder"$></h2>
+      <ul>
+    </mt:PagesHeader>
+        <mt:If tag="PageID" eq="$id"><li class="page-select"><$mt:PageTitle$></li><mt:Else>
+        <li><a href='<$mt:PagePermalink$>'><$mt:PageTitle$></a></li></mt:If>
+    <mt:PagesFooter>
+      </ul>
+    </mt:PagesFooter>
+  </mt:Pages>
+<mt:Else>
+  <mt:Pages  no_folder="1" sort_order="ascend">
+    <mt:PagesHeader>
+      <h2><i class="fa fa-chevron-right"></i> その他</h2>
+      <ul>
+    </mt:PagesHeader>
+        <mt:If tag="PageID" eq="$id"><li class="page-select"><$mt:PageTitle$></li><mt:Else>
+        <li><a href='<$mt:PagePermalink$>'><$mt:PageTitle$></a></li></mt:If>
+    <mt:PagesFooter>
+      </ul>
+    </mt:PagesFooter>
+  </mt:Pages>
+</mt:IfFolder>
+</div>
+
+<$mt:Include module="information"$>
+</div>

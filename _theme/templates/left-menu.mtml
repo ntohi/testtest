@@ -4,35 +4,41 @@
     <ul>
       <li><a href="<$mt:BlogRelativeURL$>">ホーム</a></li>
       <li>
-        <div class="dropdown">ニュース <i class="fa fa-caret-down fa-sm"></i></a></div>
+        <div class="dropdown">ニュース <i class="fa fa-caret-down fa-sm"></i></div>
           <ul class="submenu">
             <li><a href="<$mt:BlogRelativeURL$>news.html">TOP</a></li>
           <mt:Categories>
             <mt:SetVarBlock name="category_count"><$mt:CategoryCount$></mt:SetVarBlock>
             <mt:If name="category_count" ne="0">
-            <li><a href="<$mt:CategoryArchiveLink$>"><$mt:CategoryLabel$></a></li>
+            <li><a href="<$mt:CategoryArchiveLink$>"><$mt:CategoryLabel encode_html="1"$></a></li>
             </mt:If>
           </mt:Categories>
           </ul>
       </li>
-      <mt:Folders>
-      <mt:SetVarBlock name="description"><$mt:FolderDescription$></mt:SetVarBlock>
-      <mt:SetVarBlock name="currentpage"><$mt:FolderLabel$></mt:SetVarBlock>
-      <mt:Unless name="description" eq="footer_link">
+      <mt:TopLevelFolders>
       <li>
-        <div class="dropdown"><$mt:FolderLabel$> <i class="fa fa-caret-down fa-sm"></i></div>
+        <div class="dropdown"><$mt:FolderLabel encode_html="1"$> <i class="fa fa-caret-down fa-sm"></i></div>
           <ul class="submenu">
-          <mt:Pages sort_order="ascend">
-            <li><a href="<$mt:PagePermalink$>"><$mt:PageTitle$></a></li>
+          <mt:Pages sort_order="ascend" field:footer_menu="0">
+            <li><a href="<$mt:PagePermalink$>"><$mt:PageTitle encode_html="1"$></a></li>
+          </mt:Pages>
+          <mt:SubFolders>
+          <li>
+          <div class="dropdown"><$mt:FolderLabel$> <i class="fa fa-caret-down fa-sm"></i></div>
+          <ul id="<$mt:FolderBasename$>" class="submenu folder-open">
+          <mt:Pages sort_order="ascend" field:footer_menu="0">
+            <li><a href="<$mt:PagePermalink$>"><$mt:PageTitle encode_html="1"$></a></li>
           </mt:Pages>
           </ul>
+          </li>
+          <$mt:SubFolderRecurse$>
+          </mt:SubFolders>
+          </ul>
       </li>
-      </mt:Unless>
-      </mt:Folders>
-      <mt:Pages no_folder="1" sort_order="ascend">
-      <li><a href="<$mt:PagePermalink$>"><$mt:PageTitle$></a></li>
+      </mt:TopLevelFolders>
+      <mt:Pages no_folder="1" sort_order="ascend" field:footer_menu="0">
+      <li><a href="<$mt:PagePermalink$>"><$mt:PageTitle encode_html="1"$></a></li>
       </mt:Pages>
-      <li><a href="<$mt:GetVar name="instagram"$>" target="_blank">Instagram</a></li>　　　　　
     </ul>
   </div>
 </div><!-- left-off-canvas-menu -->

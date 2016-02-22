@@ -3,9 +3,10 @@
 <head>
 <meta charset="<$mt:PublishCharset$>">
 <title><$mt:EntryTitle$> | <$mt:BlogName encode_html="1"$></title>
-<meta name="description" content="<$mt:EntryExcerpt$>">
-<meta name="keywords" content="<$mt:GetVar name="metakeywords"$><$mt:EntryKeywords$>">
+<meta name="description" content="<$mt:EntryExcerpt encode_html="1"$>">
+<meta name="keywords" content="<$mt:GetVar name="metakeywords"$><$mt:EntryKeywords encode_html="1"$>">
 <meta name="viewport" content="width=device-width">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="shortcut icon" href="<$mt:BlogURL encode_html="1"$>images/favicon.ico">
 <link rel="start" href="<$mt:BlogURL encode_html="1"$>">
 <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="<$mt:Link template="feed_recent"$>">
@@ -14,22 +15,16 @@
 <!-- Open Graph Protocol -->
 <meta property="og:type" content="article">
 <meta property="og:locale" content="<$mt:BlogLanguage setvar="blog_lang"$><mt:If name="blog_lang" eq="ja">ja_JP<mt:Else><$mt:Var name="blog_lang"$></mt:If>">
-<meta property="og:title" content="<$mt:EntryTitle$> | <$mt:BlogName encode_html="1"$>">
+<meta property="og:title" content="<$mt:EntryTitle encode_html="1"$> | <$mt:BlogName encode_html="1"$>">
 <meta property="og:url" content="<$mt:EntryPermalink encode_html="1"$>">
-<meta property="og:description" content="<$mt:EntryExcerpt$>">
+<meta property="og:description" content="<$mt:EntryExcerpt encode_html="1"$>">
 <meta property="og:site_name" content="<$mt:BlogName encode_html="1"$>">
-<meta property="og:image" content="<mt:EntryAssets type="image" sort_order="ascend" limit="1"><$mt:AssetThumbnailURL width="1200"$><mt:Else><$mt:BlogURL encode_html="1"$>images/ogimage.png</mt:EntryAssets>">
+<meta property="og:image" content="<mt:If tag="CustomFieldValue" identifier="main_image_entry"><mt:CustomFieldAsset identifier="main_image_entry"><$mt:AssetThumbnailURL width="1200"$></mt:CustomFieldAsset><mt:Else><mt:EntryAssets type="image" sort_order="ascend" limit="1"><$mt:AssetThumbnailURL width="1200"$><mt:Else><$mt:BlogURL encode_html="1"$>images/ogimage.png</mt:EntryAssets></mt:If>">
 <!-- Microdata -->
-<meta itemprop="description" content="<$mt:EntryExcerpt$>">
+<meta itemprop="description" content="<$mt:EntryExcerpt encode_html="1"$>">
 <link itemprop="url" href="<$mt:EntryPermalink encode_html="1"$>">
-<link itemprop="image" href="<mt:EntryAssets type="image" sort_order="ascend" limit="1"><$mt:AssetThumbnailURL width="1200"$></mt:EntryAssets>">
-
-<link href='http://fonts.googleapis.com/css?family=Marmelad' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-<link rel="stylesheet" href="<$mt:BlogURL encode_html="1"$>css/normalize.css">
-<link rel="stylesheet" href="<$mt:BlogURL encode_html="1"$>css/foundation.min.css">
-<link rel="stylesheet" href="<$mt:BlogURL encode_html="1"$>styles.css">
-<script src="<$mt:BlogURL encode_html="1"$>js/modernizr.js"></script>
+<link itemprop="image" href="<mt:If tag="CustomFieldValue" identifier="main_image_entry"><mt:CustomFieldAsset identifier="main_image_entry"><$mt:AssetThumbnailURL width="1200"$></mt:CustomFieldAsset><mt:Else><mt:EntryAssets type="image" sort_order="ascend" limit="1"><$mt:AssetThumbnailURL width="1200"$><mt:Else><$mt:BlogURL encode_html="1"$>images/ogimage.png</mt:EntryAssets></mt:If>">
+<$mt:Include module="header-script"$>
 </head>
 
 <body class="entry-individual">
@@ -68,7 +63,7 @@
         <div class="entry-meta">
           <h2><$mt:EntryTitle$></h2>
           <time datetime="<$mt:EntryDate format="%Y-%m-%d"$>"><span class="year"><$mt:EntryDate format="%Y"$>年</span><span class="monthday"><$mt:EntryDate format="%b月%e日"$></span></time>
-          <mt:EntryCategories><a href="<$mt:CategoryArchiveLink$>" class="category"><$mt:CategoryLabel$></a> </mt:EntryCategories>
+          <mt:EntryCategories><a href="<$mt:CategoryArchiveLink$>" class="category"><$mt:CategoryLabel encode_html="1"$></a> </mt:EntryCategories>
         </div>
         <div id="entry-body">
           <$mt:EntryBody$>

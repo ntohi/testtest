@@ -1,35 +1,79 @@
+
+<$mt:Include module="config"$>
+
 @charset "UTF-8";
+
 
 @-ms-viewport {
 width: device-width;}
 
 body {
-    font-family: 'メイリオ', 'Hiragino Kaku Gothic Pro', sans-serif;
+    font-family: Arial, Roboto, "Droid Sans", "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
 }
 h1, h2, h3, h4, h5, h6 {
-    font-family: 'Marmelad', 'メイリオ', 'Hiragino Kaku Gothic Pro', sans-serif;
+    font-family: Arial, Roboto, "Droid Sans", "游ゴシック", YuGothic, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
 }
 .row, .contain-to-grid .top-bar {
     max-width: 1200px;
 }
+.menu-height {
+    height: 120px;
+}
+
 a {
     color: #333333;
 }
 a:hover, a:focus {
-    color: #5c1313;
+    color: rgb(127, 127, 127);
 }
 
 /* トップバー */
+.top-bar-section {
+    clear: both;
+    position: absolute;
+    bottom: 0;
+}
 .contain-to-grid, .menu, .top-bar-section li:not(.has-form) a:not(.button), .top-bar.expanded .title-area {
-    background-color: rgb(58, 35, 35);
+    background-color: <$mt:GetVar name="maincolor"$>;
 }
 .top-bar-section li:not(.has-form) a:not(.button):hover {
     background-color: #666666;
 }
+.top-bar-section ul li>a {
+    font-size: 1rem;
+    color: <$mt:GetVar name="maintextcolor"$>;
+}
+.top-bar-section ul li>a:hover , a:focus{
+    color: <$mt:GetVar name="maintextcolor"$>;
+}
 .top-bar-section .f-dropdown li {
     width: 200px; 
 }
+.top-bar .name h1 {
+    font-size: 2rem;
+    padding-top: 16px;
+}
+.top-bar .name h1 a{
+    color: <$mt:GetVar name="maintextcolor"$>;
+}
+.folder-open .folder-label{
+    line-height: 35px;
+    background-color: #eeeeee;
+    padding-left: 15px;
+}
 
+.folder-open .page-link{
+    padding-left: 25px!important;
+}
+.f-dropdown li.sub-folder:hover, .f-dropdown li.folder-label:hover{
+    background: none;
+}
+.bread-open {
+    margin-left: 0.5rem;
+}
+.bread-open li{
+    list-style-type: none;
+}
 
 /* ヘッダー */
 .header {
@@ -55,9 +99,54 @@ a:hover, a:focus {
     border: none;
     vertical-align: bottom;
 }
-.hide-for-large-up a:hover,a:focus {
-    color: #ffffff;
-    background-color: #666666;
+.hide-for-medium-up h1 {
+    color: <$mt:GetVar name="maintextcolor"$>;
+    font-size: 1.4rem;
+    line-height: 45px;
+    margin: 0;
+}
+.hide-for-medium-up a:hover,a:focus {
+    color: <$mt:GetVar name="maintextcolor"$>;
+    background-color: #bbbbbb;
+}
+.contact-info {
+    color: <$mt:GetVar name="maintextcolor"$>;
+    text-align: right;
+    padding: 20px;
+}
+.contact-info p{
+    font-size: 0.9rem;
+}
+.contact-info a{
+    color: <$mt:GetVar name="maintextcolor"$>;
+}
+.contact-info .tel{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.sp-menu {
+    height: 100px;
+}
+.sp-menu a{
+    color: <$mt:GetVar name="maintextcolor"$>;
+}
+.sp-menu .title img {
+    max-height: 30px;
+}
+a.menu-icon span{
+    box-shadow: 0 10px 0 1px <$mt:GetVar name="maintextcolor"$>,0 16px 0 1px <$mt:GetVar name="maintextcolor"$>,0 22px 0 1px <$mt:GetVar name="maintextcolor"$>;
+}
+.contact-info-sp {
+    color: <$mt:GetVar name="maintextcolor"$>;
+    text-align: center;
+}
+.contact-info-sp p{
+    font-size: 0.8rem;
+}
+
+.contact-info-sp .tel{
+    font-size: 1.1rem;
+    font-weight: bold;
 }
 
 
@@ -110,7 +199,6 @@ a:hover, a:focus {
 }
 #mainvisual {
     margin-bottom: 25px;
-    margin-top: -15px;
 }
 
 
@@ -150,8 +238,18 @@ ul.breadcrumbs {
 .entry-meta {
     margin-bottom: 10px;
 }
+#entry-body a, #webpage-body a{
+    text-decoration: underline;
+}
 .page-title {
     font-size: 1.5rem; 
+}
+.sidebar ul{
+    margin-left: 0;
+    list-style-type: none;
+}
+.sidebar li{
+    padding: 5px;
 }
 
 /* ページ送り */
@@ -187,13 +285,22 @@ ul.breadcrumbs {
 }
 .group > h2 {
     margin: 0 0 10px 0;
-    font-size: 14px;
+    font-size: 1.3rem;
 }
 
 /* 罫線で区切る設定 */
 .group > h2 {
-    padding: 0 0 0 5px;
-    border-left: solid 5px rgb(58, 35, 35);
+    padding: 8px;
+    border-top: solid 4px <$mt:GetVar name="maincolor"$>;
+    background-color: #eeeeee;
+}
+
+/* トップのウェブページ */
+.top-webpage h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+    padding-left: 5px;
+    border-left: solid 4px <$mt:GetVar name="maincolor"$>;
 }
 
 /* 左サイドメニュー */
@@ -233,7 +340,7 @@ ul.breadcrumbs {
 .sidemenu > h3 {
     margin: 0;
     padding: 10px;
-    background-color: #dfc27e;
+    background-color: <$mt:GetVar name="maincolor"$>;
     font-size: 14px;
 }
 .sidemenu > p {
@@ -250,7 +357,8 @@ ul.breadcrumbs {
 .entry {
     margin-bottom: 10px;
     padding: 20px 20px 10px 20px;
-    background-color: #faedcf;
+    background-color: <$mt:GetVar name="subcolor"$>;
+    *zoom: 1;
 }
 .entry img {
     float: left;
@@ -274,14 +382,15 @@ ul.breadcrumbs {
     display: block;
     clear: both;
 }
-.entry {
-    *zoom: 1;
-}
 
 /* 罫線で区切る設定 */
 .entry h3 {
     padding: 0 0 10px 0;
-    border-bottom: solid 1px rgb(58, 35, 35);
+    border-bottom: solid 1px <$mt:GetVar name="maincolor"$>;
+}
+
+#entry-list .entry {
+    background-color: transparent;
 }
 
 /* ボタン */
@@ -289,14 +398,16 @@ ul.breadcrumbs {
     display: inline-block;
     margin: 0;
     padding: 10px 25px 10px 25px;
-    background-color: rgb(58, 35, 35);
-    color: #fff;
+    background-color: <$mt:GetVar name="maincolor"$>;
+    color: <$mt:GetVar name="maintextcolor"$>;
     font-size: 16px;
     text-decoration: none;
 }
 .button:hover, .button:focus {
     outline: none;
-    background-color: #5c1313;
+    background-color: <$mt:GetVar name="maincolor"$>;
+    color: <$mt:GetVar name="maintextcolor"$>;
+    opacity:0.7; 
 }
 .news-list {
     margin-top: 7px;
@@ -305,8 +416,7 @@ ul.breadcrumbs {
 
 /* ニュース */
 .news {
-    padding: 20px; 
-    background-color: #dfe3e8;
+    padding: 5px; 
 }
 
 .news h1 {
@@ -320,6 +430,9 @@ ul.breadcrumbs {
     font-size: 14px;
     line-height: 1.4;
     list-style: none;
+}
+.news li {
+    border-bottom: 1px dotted #ccc;
 }
 .news li a {
     display: block;
@@ -351,13 +464,6 @@ ul.breadcrumbs {
     *zoom: 1;
 }
 
-/* 枠の設定 */
-.news {
-    padding: 18px;
-    border: solid 2px #dfc27e;
-    background-color: #fff;
-}
-
 /* インフォメーション */
 .information {
     padding: 20px;
@@ -365,7 +471,7 @@ ul.breadcrumbs {
     text-align: center;
     margin: 0 auto 20px;
     border-radius: 10px;
-    background-color: #add8e6;
+    background-color: <$mt:GetVar name="subcolor"$>;
 }
 .information i {
     margin: 0 0 10px 0;
@@ -377,6 +483,12 @@ ul.breadcrumbs {
     margin: 0;
     font-size: 18px;
     line-height: 1.6;
+}
+
+.social-banner {
+    max-width: 250px;
+    text-align: center;
+    margin: 0 auto 20px;
 }
 
 /* ボタン */
@@ -391,7 +503,7 @@ ul.breadcrumbs {
 .footer {
     padding: 20px;
     background-color: #444;
-    color: #fff;
+    color: #ffffff;
 }
 .footer p {
     margin: 0 0 3px 0;
@@ -399,8 +511,21 @@ ul.breadcrumbs {
     line-height: 1.4;
 }
 .footer a {
-    color: #666;
+    color: #ffffff;
     text-decoration: none;
+}
+
+.footer-menu{
+    display: inline;
+}
+.footer-menu li{
+    float: left;
+    list-style-type: none;
+    font-size: 0.8em;
+    margin-right: 20px;
+}
+.footer-submenu li{
+    clear: both;
 }
 
 /* オフキャンバスメニュー */
@@ -423,7 +548,7 @@ ul.breadcrumbs {
 .cmenu li a {
     display: block;
     padding: 8px 5px 8px 5px;
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
 }
 .cmenu li a:hover {
@@ -432,6 +557,9 @@ ul.breadcrumbs {
 .cmenu .submenu {
     background-color: #444;
     padding-left: 10px;
+}
+.cmenu .submenu .dropdown {
+    background-color: #333;
 }
 .cmenu .dropdown {
     padding-left: 10px;
@@ -452,8 +580,8 @@ ul.breadcrumbs {
 .cmenu > h3 {
     margin: 0;
     padding: 10px;
-    background-color: rgb(58, 35, 35);
-    color: #fff;
+    background-color: <$mt:GetVar name="maincolor"$>;
+    color: <$mt:GetVar name="maintextcolor"$>;
     font-size: 14px;
 }
 .cmenu > p {
@@ -461,6 +589,11 @@ ul.breadcrumbs {
 }
 .cmenu li a {
     padding-left: 10px;
+}
+
+/*ウェブページ */
+.page-select {
+    background-color: #eee;
 }
 
 @media(max-width:640px) {
@@ -474,4 +607,5 @@ ul.breadcrumbs {
     height: 120px;
     padding: 40px 10px;
 }
+
 }

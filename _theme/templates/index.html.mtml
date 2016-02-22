@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width">
 <meta name="description" content="<$mt:BlogDescription remove_html="1" encede_html="1"$>">
 <meta name="keywords" content="<$mt:GetVar name="metakeywords"$>">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="shortcut icon" href="<$mt:BlogURL encode_html="1"$>images/favicon.ico">
 <link rel="start" href="<$mt:BlogURL encode_html="1"$>">
 <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="<$mt:Link template="feed_recent"$>">
@@ -23,13 +24,8 @@
 <meta itemprop="description" content="<$mt:BlogDescription remove_html="1" encede_html="1"$>">
 <link itemprop="url" href="<$mt:BlogURL encode_html="1"$>">
 <link itemprop="image" href="<$mt:BlogURL encode_html="1"$>images/ogimage.png">
+<$mt:Include module="header-script"$>
 
-<link href='http://fonts.googleapis.com/css?family=Marmelad' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-<link rel="stylesheet" href="<$mt:BlogURL encode_html="1"$>css/normalize.css">
-<link rel="stylesheet" href="<$mt:BlogURL encode_html="1"$>css/foundation.min.css">
-<link rel="stylesheet" href="<$mt:BlogURL encode_html="1"$>styles.css">
-<script src="<$mt:BlogURL encode_html="1"$>js/modernizr.js"></script>
 </head>
 
 <body class="main-index">
@@ -39,14 +35,7 @@
 
 <$mt:Include module="header-menu"$>
 
-<div class="row">
-  <div class="columns medium-12">
-    <div class="header text-center">
-      <h1><a href="<$mt:BlogRelativeURL$>"><img src="<$mt:BlogURL encode_html="1"$>images/logo.png" alt="" class="logo" width="150"><br />Movable Type CAFE</a></h1>
-      <p>SINCE 2001</p>
-    </div>
-  </div><!-- columns -->
-</div><!-- row -->
+
 
 <div class="row">
   <div class="columns medium-12">
@@ -54,8 +43,8 @@
       <img src="<$mt:BlogURL encode_html="1"$>images/slide01.jpg" alt="" width="0" height="0">
       <div class="slide">
         <div class="inner">
-          <h3>焼きたてパン</h3>
-          <p>焼きたてのパンの販売をはじめました</p>
+          <h3>メインイメージ</h3>
+          <p>メインイメージの説明</p>
         </div>
       </div>
    </div><!-- mainvisual -->
@@ -63,33 +52,36 @@
 </div><!-- row -->
 
 <div class="row">
-  <div class="columns show-for-large-up large-3">
-    <mt:Folders>
-        <mt:SetVarBlock name="description"><$mt:FolderDescription$></mt:SetVarBlock>
-        <mt:SetVarBlock name="currentpage"><$mt:FolderLabel$></mt:SetVarBlock>
-        <mt:Unless name="description" eq="footer_link">
-     <div class="group">
-       <h2><$mt:FolderLabel$></h2>
-       <div class="sidemenu">
-         <ul>
-         <mt:Pages sort_order="ascend">
-            <li><a href="<$mt:PagePermalink$>"><$mt:PageTitle$></a></li>
-          </mt:Pages>
-         </ul>
-       </div>
-     </div><!-- group -->
-        </mt:Unless>
-    </mt:Folders>
+  <div class="columns medium-8 large-9">
+  <$mt:Include module="top-pages"$>
+
+    <mt:Entries lastn="5" field:entry_pickup="1">
+      <mt:EntriesHeader>
+      <div class="group">
+        <h2><i class="fa fa-hand-o-right"></i> 重要なお知らせ</h2>
+      </mt:EntriesHeader>
+        <div class="entry">
+          <a href="<$mt:EntryPermalink$>">
+            <img src="<mt:If tag="CustomFieldValue" identifier="main_image_entry"><mt:CustomFieldAsset identifier="main_image_entry"><$mt:AssetThumbnailURL width="320"$></mt:CustomFieldAsset><mt:Else><mt:EntryAssets type="image" sort_order="ascend" limit="1"><$mt:AssetThumbnailURL width="320"$><mt:Else><$mt:BlogRelativeURL$>images/noimage-s.jpg</mt:EntryAssets></mt:If>" alt="<$mt:EntryTitle encode_html="1"$>">
+          </a>
+          <h3><$mt:EntryTitle encode_html="1"$></h3>
+          <p>
+            <$mt:EntryDate format="%Y.%m.%d"$><br />
+            <$mt:EntryExcerpt$>
+          </p>
+          <p class="text-right">
+            <a href="<$mt:EntryPermalink$>" class="button tiny radius">
+              <i class="fa fa-angle-double-right"></i> 続きを見る
+            </a>
+          </p>
+        </div>
+      <mt:EntriesFooter>
+      </div>
+      </mt:EntriesFooter>
+    </mt:Entries>
 
     <div class="group">
-      <h2>Instagram</h2>
-      <$mt:Include module="instagram"$>
-    </div><!-- group -->
-  </div><!-- columns -->
-
-  <div class="columns medium-8 large-6">
-    <div class="group">
-      <h2>NEWS ニュース</h2>
+      <h2><i class="fa fa-newspaper-o"></i> ニュース</h2>
         <div class="news">
           <ul>
           <mt:Entries unique="1" limit="5">
@@ -102,7 +94,8 @@
           </mt:Entries>
           </ul>
         </div>
-      <p class="text-right news-list"><a href="<$mt:BlogURL encode_html="1"$>news.html" class="newslist-button"><i class="fa fa-angle-double-right"></i> ニュース一覧</a></p>
+      <p class="text-right news-list"><a href="<$mt:BlogURL encode_html="1"$>news.html" class="newslist-button"><i class="fa fa-angle-double-right"></i> ニュース一覧</a></p>  
+        
     </div><!-- group -->
   </div><!-- columns -->
 

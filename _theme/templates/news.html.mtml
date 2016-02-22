@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width">
 <meta name="description" content="<$mt:BlogDescription remove_html="1" encede_html="1"$>">
 <meta name="keywords" content="<$mt:GetVar name="metakeywords"$>">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="shortcut icon" href="<$mt:BlogURL encode_html="1"$>images/favicon.ico">
 <link rel="start" href="<$mt:BlogURL encode_html="1"$>">
 <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="<$mt:Link template="feed_recent"$>">
@@ -23,13 +24,7 @@
 <meta itemprop="description" content="<$mt:BlogDescription remove_html="1" encede_html="1"$>">
 <link itemprop="url" href="<$mt:BlogURL encode_html="1"$>news.html">
 <link itemprop="image" href="<$mt:BlogURL encode_html="1"$>images/ogimage.png">
-
-<link href='http://fonts.googleapis.com/css?family=Marmelad' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-<link rel="stylesheet" href="<$mt:BlogURL encode_html="1"$>css/normalize.css">
-<link rel="stylesheet" href="<$mt:BlogURL encode_html="1"$>css/foundation.min.css">
-<link rel="stylesheet" href="<$mt:BlogURL encode_html="1"$>styles.css">
-<script src="<$mt:BlogURL encode_html="1"$>js/modernizr.js"></script>
+<$mt:Include module="header-script"$>
 </head>
 
 <body class="news-top">

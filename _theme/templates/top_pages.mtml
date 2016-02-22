@@ -1,0 +1,20 @@
+    <mt:Pages limit="3" sort_order="ascend" field:webpage_top="1">
+    <mt:PagesHeader>
+    <div class="group top-webpage">
+    <div class="row">
+    </mt:PagesHeader>
+      <div class="columns medium-4 large-4">
+      <h3><$mt:PageTitle$></h3>
+      <a href="<$mt:PagePermalink$>" class="th"><img src="<mt:If tag="CustomFieldValue" identifier="main_image_page"><mt:CustomFieldAsset identifier="main_image_page"><$mt:AssetThumbnailURL width="480"$></mt:CustomFieldAsset><mt:Else><mt:EntryAssets type="image" sort_order="ascend" limit="1"><$mt:AssetThumbnailURL width="480"$><mt:Else><$mt:BlogRelativeURL$>images/noimage-s.jpg</mt:EntryAssets></mt:If>" /></a>
+      <p><$mt:PageExcerpt$></p>
+      <p class="text-right">
+            <a href="<$mt:PagePermalink$>" class="button tiny radius">
+              <i class="fa fa-angle-double-right"></i> 詳しく見る
+            </a>
+      </p>
+      </div>
+    <mt:PagesFooter>
+    </div>
+    </div>
+    </mt:PagesFooter>
+    </mt:Pages>

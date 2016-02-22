@@ -1,107 +1,155 @@
-id: "shop_on_staticfile"
-label: "子ブログ"
-version: "（no.3 2つ目の子ブログ「blog-b」です）"
-author_link: "http://shop0714.movabletype.io.vagrant.local/"
-author_name: "shop"
-description: "shop_on_staticfile"
+id: "General_Corporate"
+label: "General_Corporate"
+version: "1.0.0"
+author_link: "http://general-corporate.movabletype.io.vagrant.local/"
+author_name: "general_corporate"
+description: "General_Corporate"
 class: "blog"
-elements: 
-  blog_static_files: 
+elements:
+  blog_static_files:
     component: '~'
-    data: 
-      - css
+    data:
       - images
-      - js
     importer: blog_static_files
-  template_set: 
+  custom_fields:
+    component: commercial
+    data:
+      entry_pickup:
+        default: 0
+        description: トップページ中央のPICKUP オススメ部分に表示する場合にチェックを入れます。
+        name: ピックアップ
+        obj_type: post
+        options: ''
+        required: 0
+        type: checkbox
+      footer_menu:
+        default: 0
+        description: フッターメニューだけに表示するウェブページの場合にチェックを入れます。
+        name: フッターメニューにのみ表示
+        obj_type: page
+        options: ''
+        required: 0
+        type: checkbox
+      main_image_entry:
+        default: ''
+        description: 記事のサムネイルやog:imageとして表示させる画像です。
+        name: メインイメージ（記事）
+        obj_type: post
+        options: ''
+        required: 0
+        type: asset_image
+      main_image_page:
+        default: ''
+        description: ウェブページのサムネイルやog:imageとして表示させる画像です。
+        name: メインイメージ（ウェブページ）
+        obj_type: page
+        options: ''
+        required: 0
+        type: asset_image
+      webpage_top:
+        default: 0
+        description: トップページに表示するウェブページを指定します
+        name: トップページに表示（ウェブページ）
+        obj_type: page
+        options: ''
+        required: 0
+        type: checkbox
+    importer: custom_fields
+  template_set:
     component: core
-    data: 
+    data:
       base_path: templates
-      templates: 
-        archive: 
-          category_entry_listing: 
+      templates:
+        archive:
+          category_entry_listing:
             filename: category_entry_listing.mtml
             label: カテゴリ別ニュース記事リスト
-            mappings: 
-              category: 
+            mappings:
+              category:
                 archive_type: Category
                 file_template: "%-c/%i"
                 preferred: 1
-          monthly_entry_listing: 
+          monthly_entry_listing:
             filename: monthly_entry_listing.mtml
             label: 月別ニュース記事リスト
-            mappings: 
-              monthly: 
+            mappings:
+              monthly:
                 archive_type: Monthly
                 file_template: "%y/%m/%i"
                 preferred: 1
-        index: 
-          feed_recent: 
+        index:
+          feed_recent:
             filename: atom.xml.mtml
             label: 最新記事のフィード
             outfile: atom.xml
             rebuild_me: 1
-          main_index: 
+          main_index:
             filename: index.html.mtml
             label: メインページ
             outfile: index.html
             rebuild_me: 1
-          news: 
+          news:
             filename: news.html.mtml
             label: ニュース TOP
             outfile: news.html
             rebuild_me: 1
-          styles: 
+          styles:
             filename: styles.css.mtml
             label: スタイルシート
             outfile: styles.css
             rebuild_me: 1
-        individual: 
-          entry: 
+        individual:
+          entry:
             filename: entry.mtml
             label: 記事
-            mappings: 
-              individual: 
+            mappings:
+              individual:
                 archive_type: Individual
                 file_template: "%y/%m/%-f"
                 preferred: 1
-        module: 
-          config: 
+        module:
+          config:
             filename: config.mtml
             label: config
-          entry-list: 
+          entry-list:
             filename: entry-list.mtml
             label: entry-list
-          footer: 
+          footer:
             filename: footer.mtml
             label: footer
-          footer-script: 
+          footer-script:
             filename: footer-script.mtml
             label: footer-script
-          header-menu: 
+          header-menu:
             filename: header-menu.mtml
             label: header-menu
-          information: 
+          header-script:
+            filename: header-script.mtml
+            label: header-script
+          information:
             filename: information.mtml
             label: information
-          instagram: 
-            filename: instagram.mtml
-            label: instagram
-          left-menu: 
+          left-menu:
             filename: left-menu.mtml
             label: left-menu
-          news-sidebar: 
+          news-sidebar:
             filename: news-sidebar.mtml
             label: news-sidebar
-          twitter: 
+          top_pages:
+            filename: top_pages.mtml
+            label: top-pages
+          twitter:
             filename: twitter.mtml
             label: twitter
-        page: 
-          webpage: 
+          webpage_sidebar:
+            filename: webpage_sidebar.mtml
+            label: webpage-sidebar
+        page:
+          webpage:
             filename: webpage.mtml
             label: ウェブページ
-            mappings: 
-              page: 
+            mappings:
+              page:
                 archive_type: Page
                 file_template: "%-c/%-f"
                 preferred: 1
